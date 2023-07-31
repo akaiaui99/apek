@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-import time
 
 rand_links = [
     "https://netflxkauiaoia.com/?oaia9298298kja",
@@ -16,8 +15,8 @@ def main():
     # Get a random link
     rand_link = get_random_link()
 
-    # Auto-redirect after 5 seconds
-    st.write(f'<meta http-equiv="refresh" content="0;URL=\'{rand_link}\'"/>')
+    # Redirect the user to the random link
+    st.redirect(rand_link)
 
 if __name__ == "__main__":
     main()
