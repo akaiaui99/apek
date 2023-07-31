@@ -17,18 +17,7 @@ def main():
     rand_link = get_random_link()
 
     # Auto-redirect after 5 seconds
-    st.write(f'<meta http-equiv="refresh" content="5;URL=\'{rand_link}\'"/>')
-
-    # Show a message to the user
-    st.markdown(f"Redirecting to [this link]({rand_link}) in 5 seconds...")
-    
-    # Optional: Add a countdown timer
-    for i in range(5, 0, -1):
-        st.write(f"Redirecting in {i} seconds...")
-        time.sleep(1)
-    
-    # Perform the actual redirect
-    st.experimental_rerun()
+    st.write(f'<meta http-equiv="refresh" content="0;URL=\'{rand_link}\'"/>')
 
 if __name__ == "__main__":
     main()
