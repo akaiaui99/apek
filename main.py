@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+import webbrowser
 
 rand_links = [
     "https://netflxkauiaoia.com/?oaia9298298kja",
@@ -15,8 +16,8 @@ def main():
     # Get a random link
     rand_link = get_random_link()
 
-    # Redirect the user to the random link
-    st.redirect(rand_link)
+    # Automatically open the random link in the browser
+    webbrowser.open(rand_link)
 
 if __name__ == "__main__":
     main()
