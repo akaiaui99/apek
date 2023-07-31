@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-import webbrowser
 
 rand_links = [
     "https://netflxkauiaoia.com/?oaia9298298kja",
@@ -15,9 +14,14 @@ def main():
 
     rand_link = get_random_link()
 
-    # Create a button to trigger the redirect
-    if st.button("Visit Random Link in New Tab"):
-        webbrowser.open_new_tab(rand_link)
+    # Display the random link
+    st.write(f"Click the button below to open the random link:")
+    if st.button("Open Random Link"):
+        st.experimental_rerun()  # Rerun the app to show the link options
+
+    if st.button("Open in New Tab"):
+        st.experimental_rerun()  # Rerun the app to show the link options
+        st.markdown(f'<a href="{rand_link}" target="_blank">Link</a>', unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
