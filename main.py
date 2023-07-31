@@ -14,10 +14,11 @@ def main():
 
     rand_link = get_random_link()
 
-    # Create a button to trigger the redirect
-    if st.button("Visit Random Link"):
-        js_code = f"window.location.href = '{rand_link}';"
-        html_button = f'<button onclick="{js_code}">Visit Random Link</button>'
+    # Display the random link
+    st.write(f"Click the button below to open a new tab and visit the random link:")
+    if st.button("Open Random Link in New Tab"):
+        js_code = f"window.open('{rand_link}', '_blank');"
+        html_button = f'<button onclick="{js_code}">Open Random Link in New Tab</button>'
         st.markdown(html_button, unsafe_allow_html=True)
 
 if __name__ == "__main__":
